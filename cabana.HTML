@@ -1,0 +1,46 @@
+// EDITOR HTML
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+jQuery(function($){
+$('.showme').click(function(){
+var buttonText = $(this).text(); // Obter o texto atual do botão
+$(this).closest('.elementor-section').next().slideToggle();
+$(this).toggleClass('opened');
+// Alterar o texto do botão de acordo com seu estado atual
+  if ($(this).hasClass('opened')) {
+    $(this).text(buttonText.replace('Veja ficha técnica', 'Fechar ficha'));
+    $(this).css('color', 'white');
+    $(this).css('background', '#00203F');
+    $(this).css('font-size', '15px');
+    $(this).css('font-family', 'Nunito Sans');
+     $(this).css('padding', '8px', '6px', '8px', '8px');
+    $(this).css('text-align', 'center');
+    $(this).css('cursor', 'pointer');
+    $(this).css('border-radius', '15px');// Alterar o texto para "Esconder"
+  } else {
+    $(this).text(buttonText.replace('Fechar ficha', 'Veja ficha técnica'));
+    // Alterar o texto para "Mostrar"
+  }
+});
+$('.closebutton').click(function(){
+$(this).closest('.elementor-section').prev().find('.showme').click();
+});
+});
+});
+</script>
+<style>
+.showme a, .showme svg, .showme i , .showme img, .closebutton a, .closebutton i, .closebutton img{
+cursor: pointer;
+-webkit-transition: transform 0.34s ease;
+transition : transform 0.34s ease;
+}
+.opened i , .opened img,.opened svg{
+transform: rotate(90deg);
+}
+@media only screen and (max-width: 600px) {
+  .showme {
+    padding: 0px 1px 0px 1px; 
+    font-size: 8px;
+  }
+}
+</style> 
